@@ -30,7 +30,6 @@ const randomString = () => {
 
   hash = hash.join("")
   console.log(hash);
-  console.log(typeof hash);
   return hash;
 
 };

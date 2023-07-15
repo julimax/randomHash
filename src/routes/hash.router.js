@@ -8,7 +8,7 @@ const hashManager = new HashManagerMongo();
 router.get("/create",async (req, res) => {
   const newHash = randomString()
   try {
-    const hash = await hashManager.createHash(newHash, "descuento");
+    const hash = await hashManager.createHash(newHash, "15% de descuento");
     res.json(hash);
   } catch (err) {
     res.status(500).json({ error: err.message });

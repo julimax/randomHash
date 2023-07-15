@@ -6,9 +6,6 @@ class HashManagerMongo {
     }
 
     async createHash(hash, descuento) {
-        console.log(hash, descuento)
-        console.log(typeof descuento)
-        console.log("sad")
         try {
           return await this.Hash.create({ hash, descuento });
         } catch (err) {
