@@ -1,11 +1,13 @@
 import express from "express";
 import mongoose from 'mongoose';
 import hash from "./routes/hash.router.js";
+import cors from "cors";
 
 const app = express();
 
 app.listen(8081, () => console.log('Server up'));
 
+app.use(cors());
 app.use('/hash', hash);
 
 async function connectToDatabase() {
