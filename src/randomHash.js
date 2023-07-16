@@ -29,7 +29,6 @@ const randomString = () => {
   }
 
   hash = hash.join("")
-  console.log(hash);
   return hash;
 
 };
@@ -37,9 +36,3 @@ const randomString = () => {
 export default randomString;
 
   
-  //const randomLetter = getRandomLetter();
-  //console.log(randomLetter);
-  
-  //const randomNumber = getRandomNumber();
-  //console.log(randomNumber);
-
