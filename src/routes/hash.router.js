@@ -1,7 +1,7 @@
 import HashManagerMongo from "../crud/hash.js"
 import { Router } from 'express'
-import randomString from "../randomHash.js";
-import randomDescuento from "../randomDescuento.js";
+import randomString from "../functions/randomHash.js";
+import randomDescuento from "../functions/randomDescuento.js";
 
 const router = Router();
 const hashManager = new HashManagerMongo();
