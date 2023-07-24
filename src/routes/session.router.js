@@ -1,26 +1,11 @@
 import { Router } from "express";
-import passport from "passport";
+import { login, logout, profile, register } from "../controllers/auth.js"
+import { authRequired } from "../middlewares/validateToken.js";
 
 const router = Router()
 
 
-
-//Vista para registrar usuarios
-router.get('/register', (req, res) => {
-    res.render('register')
-})
-
-// API para crear usuarios en la DB
-router.post('/register', passport.authenticate('register', {
-    failureRedirect: '/session/failRegister'
-}), async(req, res) => {
-    res.redirect('/session/login')
-})
-
-// fail register
-router.get('/failRegister', (req, res) => {
-    res.render('failRegister')
-})
+router.post('/register', register)
 
 // Vista de Login
 router.get('/login', (req, res) => {
@@ -28,25 +13,13 @@ router.get('/login', (req, res) => {
 })
 
 // API para login
-router.post('/login', passport.authenticate('login', { failureRedirect: '/session/failLogin'}), async (req, res) => {
-    res.render('finish')
-})
-
-// fail login
-router.get('/failLogin', (req, res) => {
-    res.send({ error: 'Failed!!!'})
-})
+router.post('/login', login)
 
 // Cerrar Session
-router.get('/logout', (req, res) => {
-    req.session.destroy(err => {
-        if(err) {
-            console.log(err);
-            res.status(500).render('errors/base', {error: err})
-        } else res.redirect('/sessions/login')
-    })
-})
+router.get('/logout', logout)
 
+// profile
+router.get('/profile', authRequired, profile);
 
 
 export default router;

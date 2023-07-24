@@ -1,10 +1,55 @@
-<h1>Iniciar Session</h1>
+<div class='form-main'>
+    <div class="form-submain">
+        <h1 class="ln">Iniciar Sesión</h1>
+        <form class="div-form-main" action="/session/login" method="post">
+            User: <input type="text" class="input" name="user" required><br>
+            Password: <input type="password" class="input" name="password" required><br>
+            <br>
+            <input type="submit" class="login" value="Iniciar Sesión">
+        </form>
+    </div>
+</div>
 
-<form action="/session/login" method="post">
-    Email: <input type="text" name="email"><br>
-    Password: <input type="text" name="password"><br>
+<style>
+    .form-main {
+        display: flex;
+        height: calc(100vh - 100px);
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .form-submain {
+        background-color: #1a202c;
+        max-width: 25rem;
+        width: 100%;
+        padding: 2.5rem 3rem; /* Ajuste del padding, aumentando el valor de la derecha */
+        border-radius: 1.1rem;
+    }
 
-    <br>
+    .input {
+        width: 100%;
+        background-color: #4a5568;
+        color: #fff;
+        padding: 0.5rem 0.11rem;
+        border-radius: 0.375rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
 
-    <input type="submit" value="Iniciar Sesion">
-</form>
+    .login {
+        background-color: #109e52;
+        padding: 0.5rem;
+        border-radius: 0.375rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        margin: auto;
+        color: white;
+    }
+    .ln {
+    font-size: 1.5rem; /* Equivalente a text-2xl en Tailwind CSS */
+    font-weight: bold; /* Equivalente a font-bold en Tailwind CSS */
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    }
+
+</style>
