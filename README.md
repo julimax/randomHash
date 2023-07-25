@@ -1,7 +1,7 @@
 # randomHash
-
+<!--
 ![Random Hash](https://url.to.image)
-
+-->
 ## Descripción:
 
 `randomHash` es una aplicación web desarrollada en Node.js y Express que genera y administra códigos hash aleatorios junto con sus descuentos asociados. Esta aplicación proporciona una interfaz de usuario intuitiva para crear, listar y eliminar códigos hash, permitiendo a los usuarios generar descuentos únicos de forma sencilla.
