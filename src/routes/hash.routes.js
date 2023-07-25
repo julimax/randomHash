@@ -2,6 +2,7 @@ import HashManagerMongo from "../controllers/hash.js"
 import { Router } from 'express'
 import randomString from "../functions/randomHash.js";
 import randomDescuento from "../functions/randomDescuento.js";
+import { authRequired } from "../middlewares/validateToken.js";
 
 
 const router = Router();
@@ -49,6 +50,26 @@ router.post("/createDesc", async (req, res) => {
   }
 });
 
+router.delete('/delete/:id', authRequired, async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    // Intenta eliminar el dato por su _id
+    const resultado = await hashManager.deleteHash(id);
+
+    if (resultado) {
+      // El dato se eliminó exitosamente
+      res.status(200).json({ message: 'Dato eliminado exitosamente.' });
+    } else {
+      // No se encontró el dato con el _id proporcionado
+      res.status(404).json({ error: 'Dato no encontrado.' });
+    }
+  } catch (error) {
+    // Ocurrió un error al intentar eliminar el dato
+    console.error('Error al eliminar el dato:', error);
+    res.status(500).json({ error: 'Error al eliminar el dato.' });
+  }
+});
 
 
 

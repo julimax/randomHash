@@ -5,6 +5,7 @@ class HashManagerMongo {
         this.Hash = Hash;
     }
 
+
     async createHash(hash, descuento) {
         try {
           return await this.Hash.create({ hash, descuento });
@@ -17,14 +18,21 @@ class HashManagerMongo {
 
       async getDesc(hash) {
         try {
-          console.log(hash)
           const hashFound = await this.Hash.findOne({hash: hash});
-          console.log(hashFound.descuento)
           return hashFound.descuento
         } catch (err) {
           throw new Error("Error al encontrar descuento", err);
         }
       }
-}
+    
+      async deleteHash (id){
+        try {
+          await Hash.findByIdAndDelete(id);
+          return { message: 'Delete successful' };
+        } catch (err) {
+          throw new Error("Error al encontrar descuento", err);
+        }
+      };
+    }
 
 export default HashManagerMongo;

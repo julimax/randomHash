@@ -14,8 +14,55 @@
         {{/if}}
     </div>
 </div>
-<h1>profile</h1>
-<div></div>
+<div class="hash-container">
+  {{#if all}}
+    {{#each all}}
+        {{#each this}}
+        {{#if hash}}
+      <div class="hash-box">
+        <p>Hash: {{[hash]}}</p>
+        <p>Descuento: {{this.descuento}}</p>
+        <p>Fecha de creación: {{this.createdAt}}</p>
+        <button class="delete" data-id="{{_id}}">delete</button>
+      </div>
+       {{/if}}
+    {{/each}}
+    {{/each}}
+  {{else}}
+    <p>No se encontraron hashes.</p>
+  {{/if}}
+</div>
+<div>
+
+</div>
+
+<script>
+  const deleteButtons = document.querySelectorAll('.delete');
+  
+  deleteButtons.forEach(deleteButton => {
+    deleteButton.addEventListener('click', () => {
+      const id = deleteButton.dataset.id;
+      alert(id)
+      // Realizar la solicitud DELETE al servidor
+      fetch(`/hash/delete/${id}`, {
+        method: 'DELETE',
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.reload()
+          console.log('Dato eliminado exitosamente.');
+        } else {
+          console.error('Error al eliminar el dato.');
+        }
+      })
+      .catch(error => {
+        // Error de red o solicitud fallida
+        console.error('Error en la solicitud:', error);
+      });
+    });
+  });
+</script>
+
 
 <style>
 
@@ -53,5 +100,31 @@
     }
     .items {
         margin-left: auto; /* Mueve los elementos a la derecha */
+    }
+
+      .hash-container {
+        display: flex;
+        margin-top: 30px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .hash-box {
+        margin: auto;
+        background-color: #272f41;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        width: 200px;
+    }
+
+    .delete{
+        background-color: rgb(223, 82, 82);
+        padding: 0.3rem 0.11rem;
+        border-radius: 0.375rem;
+    }
+    .delete:hover{
+        background-color: rgb(104, 13, 13);
+        cursor: pointer;    
     }
 </style>

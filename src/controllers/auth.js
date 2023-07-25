@@ -1,6 +1,7 @@
 import UserModel from "../models/user.model.js"
 import { encryptPassword, isValidPassword } from "../config/bcrypt.js"
 import { createAccessToken } from "../libs/jwt.js"
+import { Hash } from "../models/hash.model.js"
 
 export const register = async (req, res) => {
     const {password, user} = req.body
@@ -74,7 +75,8 @@ export const profile = async (req, res) => {
         const _id = req.user.id
         const userFound = await UserModel.findOne({_id})
         const user = userFound.user
-        res.render('profile', { user });
+        const all = await Hash.find()
+        res.render('profile', { all: all, user });
     
 } 
 
