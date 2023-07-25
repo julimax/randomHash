@@ -32,17 +32,10 @@
 - Node.js y npm instalados en tu máquina.
 - Conexión a una base de datos MongoDB.
 
-## Contribución:
-
-Si deseas contribuir a este proyecto, te invitamos a realizar un fork y enviar tus pull requests. Agradecemos todas las contribuciones y mejoras.
-
-## Licencia:
-
-Este proyecto está bajo la licencia MIT. Puedes ver el archivo LICENSE para más detalles.
 
 ## Autor:
 
-- Nombre: [JuliaMax](https://github.com/julimax)
+- Nombre: [Julimax](https://github.com/julimax)
 <!--- - Sitio web: [www.juliamax.com](https://www.juliamax.com) -->
 
 ¡Gracias por tu interés en `randomHash`! Si tienes alguna pregunta o sugerencia, por favor no dudes en contactarme. ¡Disfruta del uso de la aplicación!
