@@ -35,5 +35,22 @@ router.post("/getDesc", async (req, res) => {
   }
 });
 
+router.post("/createDesc", async (req, res) => {
+  const { hash, descuento } = req.body;
+  console.log(hash, descuento)
+  try {
+    // Agregar el símbolo de porcentaje (%) al valor del descuento antes de pasarlo a hashManager.createHash
+    const descuentoConPorcentaje = `${descuento} % de descuento`;
+    await hashManager.createHash(hash, descuentoConPorcentaje);
+    res.status(200).json({ message: "descuento creado" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Error al crear el descuento." });
+  }
+});
+
+
+
+
 
 export default router;

@@ -60,7 +60,12 @@ export const login = async (req, res) => {
     }
 } 
 
-export const logout = async (req, res) => {} 
+export const logout = async (req, res) => {
+    res.cookie('token', '', {
+        expires: new Date(0)
+    })
+    return res.render('index')
+} 
 
 export const profile = async (req, res) => {
         console.log(req.user.id)
@@ -73,4 +78,23 @@ export const profile = async (req, res) => {
     
 } 
 
+export const index = async (req, res) => {
+    if (!req.user || !req.user.id) return res.render('index')
+
+    const _id = req.user.id
+    const userFound = await UserModel.findOne({_id}) 
+    const user = userFound.user
+    res.render('index', { user });
+} 
+
+export const create = async (req, res) => {
+    if (!req.user || !req.user.id) return res.render('index')
+
+    const _id = req.user.id
+    const userFound = await UserModel.findOne({_id}) 
+    const user = userFound.user
+    res.render('create', { user });
+} 
+
 export const verifyToken = async (req, res) => {} 
+

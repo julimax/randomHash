@@ -22,4 +22,6 @@ router.get('/logout', logout)
 router.get('/profile', authRequired, profile);
 
 
+
+
 export default router;

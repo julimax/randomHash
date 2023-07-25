@@ -1,17 +1,9 @@
-import { model, Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 
-const hashSchema = Schema({
+const hashSchema = new Schema({
   hash: { type: String },
   descuento: { type: String },
-  createdAt: { type: Date, expires: '14d', default: Date.now }
+  createdAt: { type: Date, expires: '10s', default: Date.now }
 });
 
-export const Hash = model("hash", hashSchema);
-
-
-const nuevoHash = new Hash({
-  hash: 'valor-del-hash',
-  descuento: 'valor-del-descuento',
-  createdAt: Date.now(), // Puedes usar la fecha y hora actual o alguna fecha específica que hayas obtenido del formulario
-  expires: String, // Asignar el tiempo de expiración personalizado
-});
+export const Hash = model("Hash", hashSchema);

@@ -4,8 +4,8 @@
     </div>
     <div class="items">
         {{#if user}}
+            <a class="alogin" href="/index">buscar descuento</a>
             <a class="alogin" href="/session/profile">profile</a>
-            <a class="alogin" href="/create">crear descuentos</a>
             <a class="alogin" href="/session/logout">logout</a>
         {{else}}
             <a class="alogin" href="/session/login">login</a>
@@ -14,38 +14,31 @@
 </div>
 <div class='form-main'>
     <div class="form-submain">
-        <h1 class="ln">Buscar Descuento</h1>
-        <form class="div-form-main" onsubmit="event.preventDefault(); getDescuento();" method="post">
+        <h1 class="ln">Crear Descuento</h1>
+        <form class="div-form-main" onsubmit="event.preventDefault(); postDescuento();" method="post">
             Código: <input type="text" class="input" name="hash" required><br>
-            Descuento: <h2 id="descuento"></h2><br>
+            % de descuento: <input type="number" class="input" name="descuento" required><br>
             <br>
-            <input type="submit" class="login" value="Buscar">
+            <input type="submit" class="login" value="Crear">
         </form>
     </div>
 </div>
 <script>
-    function getDescuento() {
+    function postDescuento() {
     const hashInput = document.querySelector('input[name="hash"]');
-    const descuentoElement = document.getElementById('descuento');
+    const descuentoInput = document.querySelector('input[name="descuento"]');
 
-    fetch('/hash/getDesc', {
+    fetch('/hash/createDesc', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ hash: hashInput.value })
+        body: JSON.stringify({ hash: hashInput.value, descuento: descuentoInput.value })
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.descuento) {
-        descuentoElement.textContent = data.descuento;
-        } else {
-        descuentoElement.textContent = 'Descuento no encontrado.';
-        }
-    })
+    .then(alert('descuento creado con exito'))
     .catch(error => {
         console.error('Error:', error);
-        descuentoElement.textContent = 'Error al obtener el descuento.';
+        descuentoElement.textContent = 'Error al crear el descuento.';
     });
     }
 </script>

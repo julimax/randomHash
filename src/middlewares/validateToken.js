@@ -16,3 +16,37 @@ export const authRequired = (req, res, next) => {
 
     
 }
+
+export const verifyTokenIndex = async (req, res, next) => {
+    const { token } = req.cookies;
+
+    if (!token) {
+        next();
+    } else {
+        jwt.verify(token, TOKEN_SECRET, (err, user) => {
+            if (err) {
+                next();
+            } else {
+                req.user = user;
+                next();
+            }
+        });
+    }
+};
+
+export const verifyTokenCreate = async (req, res, next) => {
+    const { token } = req.cookies;
+
+    if (!token) {
+        next();
+    } else {
+        jwt.verify(token, TOKEN_SECRET, (err, user) => {
+            if (err) {
+                next();
+            } else {
+                req.user = user;
+                next();
+            }
+        });
+    }
+};

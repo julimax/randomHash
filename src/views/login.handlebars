@@ -1,3 +1,4 @@
+
 <div class='form-main'>
     <div class="form-submain">
         <h1 class="ln">Iniciar Sesión</h1>
@@ -7,9 +8,16 @@
             <br>
             <input type="submit" class="login" value="Iniciar Sesión">
         </form>
-    </div>
-</div>
+        <button class="descuentos" onclick="redirectToURL('/index')">Descuentos</button>
 
+    </div>
+
+</div>
+<script>
+function redirectToURL(url) {
+    window.location.href = url;
+}
+</script>
 <style>
     .form-main {
         display: flex;
@@ -50,6 +58,13 @@
     font-weight: bold; /* Equivalente a font-bold en Tailwind CSS */
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+    }
+
+    .descuentos{
+        margin-top: 20px;
+        background-color: rgb(109, 174, 235);
+        border-radius: 0.375rem;
+        padding: 0.5rem;
     }
 
 </style>

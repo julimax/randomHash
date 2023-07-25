@@ -1,8 +1,57 @@
-<h1>profile</h1>
-<div>
-    {{#if user}}
-        <p>Bienvenido, {{user}}</p>
-    {{else}}
-        <p>No has iniciado sesión.</p>
-    {{/if}}
+<div class="navbar">
+    <div class="welcome">
+        {{#if user}}
+            <p>Bienvenido, {{user}}</p>
+        {{/if}}
+    </div>
+    <div class="items">
+        <a class="alogin" href="/index">buscar descuentos</a>
+        <a class="alogin" href="/create">crear descuento</a>
+        {{#if user}}
+            <a class="alogin" href="/session/logout">logout</a>
+        {{else}}
+            <a class="alogin" href="/session/login">login</a>
+        {{/if}}
+    </div>
 </div>
+<h1>profile</h1>
+<div></div>
+
+<style>
+
+
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        padding: 1rem 10rem;
+        margin: 0 50px;
+        border-radius: 10px;
+        background-color: #272f41;
+    }
+
+    .alogin {
+        color: white;
+        margin-left: 25px;
+    }
+
+    .alogin:hover {
+        color: greenyellow;
+    }
+
+    .welcome {
+        margin-right: 90px;
+    }
+    .welcome:hover {
+        color: greenyellow;
+    }
+    .items {
+        margin-left: auto; /* Mueve los elementos a la derecha */
+    }
+</style>
