@@ -42,7 +42,7 @@
   deleteButtons.forEach(deleteButton => {
     deleteButton.addEventListener('click', () => {
       const id = deleteButton.dataset.id;
-      alert(id)
+      alert('Descuento eliminado')
       // Realizar la solicitud DELETE al servidor
       fetch(`/hash/delete/${id}`, {
         method: 'DELETE',
