@@ -15,7 +15,7 @@ const app = express();
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(cors());
-app.use(cookieParser());
+app.use(cookieParser('socrates'));
 app.use(morgan('dev'))
 app.use('/hash', hash);
 app.use('/session', sessionRouter);
