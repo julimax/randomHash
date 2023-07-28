@@ -36,7 +36,7 @@ router.post("/getDesc", async (req, res) => {
   }
 });
 
-router.post("/createDesc", async (req, res) => {
+router.post("/createDesc",authRequired , async (req, res) => {
   const { hash, descuento } = req.body;
   console.log(hash, descuento)
   try {
