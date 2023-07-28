@@ -18,7 +18,7 @@ export const authRequired = (req, res, next) => {
 }
 
 export const verifyTokenIndex = async (req, res, next) => {
-    const { token } = req.cookies;
+    const { token } = req.signedCookies;;
 
     if (!token) {
         next();
@@ -35,7 +35,7 @@ export const verifyTokenIndex = async (req, res, next) => {
 };
 
 export const verifyTokenCreate = async (req, res, next) => {
-    const { token } = req.cookies;
+    const { token } = req.signedCookies;;
 
     if (!token) {
         next();
